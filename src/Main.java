@@ -26,11 +26,11 @@ public class Main {
 
         while (true) {
             System.out.println("\nSea bienvenido/a al Conversor de Moneda");
-            System.out.println("1) USD → ARS");
-            System.out.println("2) ARS → USD");
-            System.out.println("3) USD → BRL");
-            System.out.println("4) BRL → USD");
-            System.out.println("5) USD → PEN");
+            System.out.println("1) USD a ARS");
+            System.out.println("2) ARS a USD");
+            System.out.println("3) USD a BRL");
+            System.out.println("4) BRL a USD");
+            System.out.println("5) USD a PEN");
             System.out.println("6) Ver historial");
             System.out.println("7) Salir");
 
@@ -65,9 +65,9 @@ public class Main {
 
 
             try {
-                String json = service.getLatestRates(fromCurrency);
+                ExchangeRateResponse response = service.getLatestRates(fromCurrency);
+                double rate = response.conversion_rates().get(toCurrency);
 
-                double rate = ExchangeRateParser.getCurrencyRate(json, toCurrency);
 
                 double result =
                         CurrencyConverter.convert(amount, rate);
