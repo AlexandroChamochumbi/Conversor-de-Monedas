@@ -9,9 +9,9 @@ public class CurrencyService {
     private static final HttpClient client = HttpClient.newHttpClient();
     private static final String apiKey = "YOUR_API_KEY_HERE"; // Reemplaza con tu clave de API
 
-    public String getRate(String from, String to) throws Exception {
+    public String getLatestRates(String base) throws Exception {
         String url = "https://v6.exchangerate-api.com/v6/"
-                + apiKey + "/pair/" + from + "/" + to;
+                + apiKey + "/latest/" + base;
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
